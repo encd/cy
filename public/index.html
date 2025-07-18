@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradePro - Online Trading Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- The popup overlay and content (will be hidden by default) -->
+<div id="popupOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
+    <div style="position: relative; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto;">
+        <!-- Your existing content - I've just added the close button -->
+        <div style="background-color: #1e293b; color: #f1f5f9; padding: 40px; border-radius: 16px; font-family: 'Inter', sans-serif; line-height: 1.6; position: relative;">
+            <button id="closePopupBtn" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #f1f5f9; font-size: 24px; cursor: pointer;">×</button>
+            
+            <h2 style="font-size: 2rem; color: #22d3ee; margin-bottom: 20px;">🎯 About the Tournament</h2>
+            
+            <p><strong>QuickPipz</strong> is the ultimate binary trading tournament platform designed for traders who want to test their skills, compete globally, and win massive rewards — all with a small entry fee.</p>
+
+            <p>✅ Entry Fee: <strong>Only $5 USDT</strong><br>
+            ✅ You Receive: <strong>$100 Demo USDT</strong> to trade during the tournament.</p>
+
+            <p>The tournament will officially begin when we reach <strong style="color: #34d399;">20,000 participants</strong>. This ensures fair competition, bigger prizes, and a truly global challenge.</p>
+
+            <p>🎮 Once started, all players will trade in real-time using demo funds. The goal is simple: <strong>grow your demo account as much as possible</strong> before the time runs out.</p>
+
+            <p>📊 A live leaderboard will show your rank and top traders throughout the event. This keeps the thrill alive and helps you track your competition.</p>
+
+            <h3 style="font-size: 1.5rem; color: #22d3ee; margin-top: 30px;">💡 Rebuy Option:</h3>
+            <p>If your demo balance drops to zero or you want another chance to improve your rank — you can <strong>rebuy</strong> and get another $100 demo fund.</p>
+            <p>💵 <strong>Rebuy Cost: $5 USDT</strong><br>
+            ⏳ You can rebuy as many times as you want before the tournament ends.</p>
+
+            <h3 style="font-size: 1.5rem; color: #22d3ee; margin-top: 30px;">🏆 Prize Pool Breakdown:</h3>
+            <ul style="margin-left: 20px;">
+                <li>🥇 1st Place – <strong>$30,000 USDT</strong></li>
+                <li>🥈 2nd Place – <strong>$20,000 USDT</strong></li>
+                <li>🥉 3rd Place – <strong>$10,000 USDT</strong></li>
+                <li>🎖️ 4th Place – <strong>$5,000 USDT</strong></li>
+                <li>🎖️ 5th Place – <strong>$2,500 USDT</strong></li>
+                <li>🏅 6th–35th – <strong>$1,000 USDT</strong> each</li>
+            </ul>
+
+            <p style="margin-top: 20px;">🎉 A total of <strong>35 winners</strong> will share the prize pool. Your journey from $5 to $30,000 starts here.</p>
+
+            <p style="margin-top: 20px;"><strong style="color: #facc15;">🚀 Don't wait!  <div class="hero-buttons">
+                    <a id="joinlink" href="http://localhost:3000/?panel=register" class="btn btn-primary">Join Now</a> </div> Tournament starts at 20,000 participants!</strong></p>
+        </div>
+    </div>
+</div>
+  
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="http://localhost:3000/" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="logo-text">QuickPipz</div>
+            </a>
+            
+            <div class="nav-buttons">
+                <button  class="btn btn-login" id="openLogin">
+                  <a style="text-decoration:none; color:white;" href="/login" >Login</a>
+                  </button>
+                <button class="btn btn-register" id="openRegister">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Trading Card -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+               <h1><span style="color: var(--color-accent-green);">$100,000 USDT prize pool</span></h1>
+        <p>Join tournament with just $5 USDT, get $100 demo funds, compete and win $30,000 USDT</p>
+                
+                <div class="hero-buttons">
+                    <a id="joinlink"href="/?panel=register" class="btn btn-primary">Join Now</a>
+                    <a id="openPopupBtn" href="#" class="btn btn-outline">See Details</a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">$0</div>
+                        <div class="stat-text">Commission Fees</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-text">Trading Hours</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0.1s</div>
+                        <div class="stat-text">Execution Speed</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="trading-card">
+                    <div class="card-header">
+                        <div class="card-title">EUR/USD</div>
+                        <div class="asset-info">
+                            <div class="asset-icon">
+                                <i class="fas fa-euro-sign"></i>
+                            </div>
+                            <div class="asset-name">Forex</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="price-display">1.09245</div>
+                        <div class="price-change">
+                            <div class="change-up">+0.24%</div>
+                            <div>•</div>
+                            <div>Today</div>
+                        </div>
+                        
+                        <div class="trading-controls">
+                            <button class="control-btn btn-buy">Buy</button>
+                            <button class="control-btn btn-sell">Sell</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Login Panel -->
+        <div class="login-container" id="loginPanel">
+            <div class="login-header">
+                <div class="login-title">Login to Your Account</div>
+                <button class="close-login" id="closeLogin">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="error-message" id="loginErrorMessage" style="display: none;"></div>
+            <div class="success-message" id="loginSuccessMessage" style="display: none;"></div>
+            
+            <form method="POST" action="/login" id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+           
+            <div class="social-login">
+                <div class="social-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-text">or login with</div>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="social-buttons">
+                    <div class="social-btn">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="social-btn">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="social-btn">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="register-link">
+                Don't have an account? <a href="#" id="showRegister">Register now</a>
+            </div>
+        </div>
+
+        <!-- Registration Panel -->
+        <div class="login-container" id="registerPanel">
+            <div class="login-header">
+                <div class="login-title">Create Your Account</div>
+                <button class="close-login" id="closeRegister">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="error-message" id="registerErrorMessage" style="display: none;"></div>
+            
+            <form id="registerForm" method="POST" action="/register"  >
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reg_email">Email Address</label>
+                    <input type="email" id="reg_email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reg_password">Password</label>
+                    <input type="password" id="reg_password" name="password" class="form-control" placeholder="Create a password (min 8 characters)" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm your password" required>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the <a href="#" style="color:#2563eb;">Terms of Service</a> and <a href="#" style="color:#2563eb;">Privacy Policy</a></label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+            <br>
+             <div class="register-link">
+                Already have an account? <a href="#" id="showLogin">Login now</a>
+            </div>
+         <br>
+            <div class="social-login">
+                <div class="social-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-text">or register with</div>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="social-buttons">
+                    <div class="social-btn">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="social-btn">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="social-btn">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+  <div class="container">
+    <h2 class="section-title">🏆 Prize Pool</h2>
+    <div class="prizes">
+      <div class="prize-card" style="border-color: #f59e0b; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1))">
+        <div class="prize-medal">🥇</div>
+        <div>
+          <div class="prize-rank">1st Place</div>
+          <div class="prize-amount">$30,000 USDT</div>
+        </div>
+      </div>
+      <div class="prize-card" style="border-color: #9ca3af; background: linear-gradient(135deg, rgba(156, 163, 175, 0.1), rgba(107, 114, 128, 0.1))">
+        <div class="prize-medal">🥈</div>
+        <div>
+          <div class="prize-rank">2nd Place</div>
+          <div class="prize-amount">$20,000 USDT</div>
+        </div>
+      </div>
+      <div class="prize-card" style="border-color: #b45309; background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), rgba(146, 64, 14, 0.1))">
+        <div class="prize-medal">🥉</div>
+        <div>
+          <div class="prize-rank">3rd Place</div>
+          <div class="prize-amount">$10,000 USDT</div>
+        </div>
+      </div>
+      <div class="prize-card">
+        <div class="prize-medal">🎖️</div>
+        <div>
+          <div class="prize-rank">4th Place</div>
+          <div class="prize-amount">$5,000 USDT</div>
+        </div>
+      </div>
+      <div class="prize-card">
+        <div class="prize-medal">🎖️</div>
+        <div>
+          <div class="prize-rank">5th Place</div>
+          <div class="prize-amount">$2,500 USDT</div>
+        </div>
+      </div>
+      <div class="prize-card">
+        <div class="prize-medal">🎖️</div>
+        <div>
+          <div class="prize-rank">6th–35th Place</div>
+          <div class="prize-amount">$1,000 USDT</div>
+          <div class="prize-note">Per winner (30 people)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Assets Section -->
+    <section class="assets" id="assets">
+        <div class="section-title">
+            <h2>Popular Trading Assets</h2>
+            <p>Trade a wide range of assets with competitive spreads and fast execution</p>
+        </div>
+        
+        <div class="assets-grid">
+            <div class="asset-card">
+                <div class="asset-header">
+                    <div class="asset-icon-lg asset-icon-blue">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <div class="asset-tag">Crypto</div>
+                </div>
+                
+                <div class="asset-name-lg">Bitcoin</div>
+                <div class="asset-price">$117,382.75</div>
+                <div class="asset-change change-positive">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>+2.8%</span>
+                </div>
+            </div>
+            
+            <div class="asset-card">
+                <div class="asset-header">
+                    <div class="asset-icon-lg asset-icon-green">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="asset-tag">Forex</div>
+                </div>
+                
+                <div class="asset-name-lg">Gold</div>
+                <div class="asset-price">$3328.40</div>
+                <div class="asset-change change-positive">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>+0.9%</span>
+                </div>
+            </div>
+            
+            <div class="asset-card">
+                <div class="asset-header">
+                    <div class="asset-icon-lg asset-icon-orange">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="asset-tag">Indices</div>
+                </div>
+                
+                <div class="asset-name-lg">S&P 500</div>
+                <div class="asset-price">6263.18</div>
+                <div class="asset-change change-negative">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>-0.5%</span>
+                </div>
+            </div>
+            
+            <div class="asset-card">
+                <div class="asset-header">
+                    <div class="asset-icon-lg asset-icon-red">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <div class="asset-tag">Commodities</div>
+                </div>
+                
+                <div class="asset-name-lg">Crude Oil</div>
+                <div class="asset-price">$70.25</div>
+                <div class="asset-change change-positive">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>+0%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Why Trade With Us</h2>
+            <p>Experience the difference with our professional trading platform</p>
+        </div>
+        
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">Fast Execution</h3>
+                <p class="feature-description">Trade execution in less than 0.1 seconds with no requotes</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">Secure Funds</h3>
+                <p class="feature-description">Segregated client funds and top-tier security protocols</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="feature-title">Mobile Trading</h3>
+                <p class="feature-description">Trade on the go with our powerful mobile app</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Advanced Charts</h3>
+                <p class="feature-description">Professional charting tools with technical indicators</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-text">QuickPipz</div>
+                </div>
+                <p>QuickPipz is a next-generation binary trading tournament platform, based in Asia and open to traders around the world. With just a $5 entry, participants receive $100 in demo funds to compete for massive USDT prizes in a high-energy trading arena.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 QuickPipz. All rights reserved. Trade and Win</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

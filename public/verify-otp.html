@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OTP Verification | TradePro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --success: #10b981;
+      --danger: #ef4444;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f1f5f9;
+      text-align: center;
+      margin-top: 60px;
+      min-height: 100vh;
+    }
+
+    .otp-container {
+      background-color: #f1f5f9;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 480px;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-icon {
+      background-color: var(--primary);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    h1 {
+      font-size: 24px;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .subtext {
+      color: var(--gray);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .otp-input {
+      width: 100%;
+      height: 56px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.2s;
+      margin-bottom: 32px;
+      padding: 0 15px;
+    }
+
+    .otp-input:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .verify-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .verify-btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    .verify-btn:disabled {
+      background-color: var(--gray);
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="otp-container">
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <div class="logo-text">QuickPipz</div>
+    </div>
+
+    <h1>Verify Your Account</h1>
+    <p class="subtext">We've sent a 6-digit verification code to your email</p>
+
+    <form action="/verify-otp" method="POST" id="otpForm">
+      <input
+        type="text"
+        name="otp"
+        class="otp-input"
+        maxlength="6"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        placeholder="Enter 6-digit code"
+        id="otpField"
+        required
+      />
+      <button type="submit" class="verify-btn" id="verifyBtn" disabled>Verify Account</button>
+    </form>
+  </div>
+
+  <script>
+    const otpField = document.getElementById('otpField');
+    const verifyBtn = document.getElementById('verifyBtn');
+
+    otpField.addEventListener('input', function () {
+      if (this.value.length === 6) {
+        verifyBtn.disabled = false;
+      } else {
+        verifyBtn.disabled = true;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trade | QuickPipz</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 20px; }
+    #balance { font-size: 24px; margin-bottom: 10px; }
+    #trade-result { font-size: 20px; margin-top: 10px; color: green; }
+    .btn { padding: 10px 20px; font-size: 16px; margin: 10px; cursor: pointer; }
+    .buy { background: green; color: white; }
+    .sell { background: red; color: white; }
+  </style>
+</head>
+<body>
+  <h2>Welcome to QuickPipz Trading</h2>
+  <div id="balance">Balance: $100</div>
+
+  <div>
+    <button class="btn buy" onclick="makeTrade('buy')">Buy</button>
+    <button class="btn sell" onclick="makeTrade('sell')">Sell</button>
+  </div>
+
+  <div id="trade-result"></div>
+
+  <script>
+    let balance = 100;
+
+    function makeTrade(direction) {
+      const result = Math.random() < 0.5 ? 'win' : 'loss'; // 50-50
+      const payout = 10;
+
+      if (result === 'win') {
+        balance += payout;
+        document.getElementById('trade-result').innerText = `You WON! +$${payout}`;
+      } else {
+        balance -= payout;
+        document.getElementById('trade-result').innerText = `You LOST! -$${payout}`;
+      }
+
+      document.getElementById('balance').innerText = `Balance: $${balance}`;
+    }
+  </script>
+</body>
+</html>
